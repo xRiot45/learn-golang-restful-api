@@ -1,11 +1,14 @@
-package learngolangrestfulapi
+package main
 
 import (
 	"net/http"
 	"xriot/learn-golang-restful-api/app"
 	"xriot/learn-golang-restful-api/controller"
+	"xriot/learn-golang-restful-api/helper"
 	"xriot/learn-golang-restful-api/repository"
 	"xriot/learn-golang-restful-api/service"
+
+	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/go-playground/validator"
 	"github.com/julienschmidt/httprouter"
@@ -27,10 +30,11 @@ func main() {
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
 
 	server := http.Server{
-		Addr:    "localhost:8080",
+		Addr:    "localhost:3000",
 		Handler: router,
 	}
 
-	server.ListenAndServe()
+	err := server.ListenAndServe()
+	helper.PanicIfError(err)
 
 }
