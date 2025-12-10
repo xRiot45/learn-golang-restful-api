@@ -6,6 +6,7 @@ import (
 	"xriot/learn-golang-restful-api/controller"
 	"xriot/learn-golang-restful-api/exception"
 	"xriot/learn-golang-restful-api/helper"
+	"xriot/learn-golang-restful-api/middleware"
 	"xriot/learn-golang-restful-api/repository"
 	"xriot/learn-golang-restful-api/service"
 
@@ -34,7 +35,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:3000",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()
