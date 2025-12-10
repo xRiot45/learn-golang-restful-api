@@ -1,0 +1,29 @@
+# Get All Categories
+# GET http://localhost:3000/api/categories
+# Accept: application/json
+
+# Create New Category
+# POST http://localhost:3000/api/categories
+# Accept: application/json
+# Content-Type: application/json
+
+# {
+#   "name": "Computer"
+# }
+
+# Get Category By ID
+# GET http://localhost:3000/api/categories/2
+# Accept: application/json
+
+# Update Category By ID
+# PUT http://localhost:3000/api/categories/2
+# Accept: application/json
+# Content-Type: application/json
+
+# {
+#   "name": "Fashion Updated"
+# }
+
+# Delete Category By ID
+DELETE http://localhost:3000/api/categories/2
+Accept: application/json
