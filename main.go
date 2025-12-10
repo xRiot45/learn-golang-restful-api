@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"xriot/learn-golang-restful-api/app"
 	"xriot/learn-golang-restful-api/controller"
+	"xriot/learn-golang-restful-api/exception"
 	"xriot/learn-golang-restful-api/helper"
 	"xriot/learn-golang-restful-api/repository"
 	"xriot/learn-golang-restful-api/service"
@@ -28,6 +29,8 @@ func main() {
 	router.POST("/api/categories", categoryController.Create)
 	router.PUT("/api/categories/:categoryId", categoryController.Update)
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
+
+	router.PanicHandler = exception.ErrorHandler
 
 	server := http.Server{
 		Addr:    "localhost:3000",
